@@ -52,16 +52,17 @@ impl Fighter for Goblin {
 }
 
 fn main() {
-    println!("The Arena is under construction ...");
-    
-    // Instantiate a Warrior player
-    let player_one: Warrior = Warrior {
+    println!("Welcome to the Rusty Arena! ⚔️");
+    println!("Its going to be a fierce battle! Its a bumpy night ahead! Fasten your seatbelt 🌑");
+    println!("==============================");
+
+    let mut player_one: Warrior = Warrior {
         name: String::from("Roshan"),
         health: 100,
         attack_power: 15,
     };
 
-    let player_two: Goblin = Goblin {
+    let mut player_two: Goblin = Goblin {
         name: String::from("Gobbo"),
         health: 80,
         attack_power: 10,
@@ -72,10 +73,38 @@ fn main() {
         player_one.name(),
         player_one.hp()
     );
+    println!("==============================");
 
     println!(
         "{} has entered the arena with {} HP!",
         player_two.name(),
         player_two.hp()
     );
+    println!("==============================");
+    println!("==============================");
+
+    println!("Now let the blood spill! 🩸");
+    println!("==============================");
+    print!("1 ... 2 ... 3 ... Bell Rings! 🔔\n\n");
+
+    loop {
+        // add a check if the player punching has hp > 0 before attacking
+        if player_two.hp() <= 0 {
+            println!("{} has been defeated! ☠️ ", player_two.name());
+            break;
+        }
+
+        player_one.receive_damage(player_two.attack_power);
+        println!("{} 🥊 {}", player_one.name(), player_two.name());
+        
+        if player_one.hp() <= 0 {
+            println!("{} has been defeated! ☠️ ", player_one.name());
+            break;
+        }
+        
+        player_two.receive_damage(player_one.attack_power);
+        println!("{} 🥊 {}", player_two.name(), player_one.name());
+    }
+
+
 }
