@@ -51,6 +51,11 @@ impl Fighter for Goblin {
     }
 }
 
+// LootBox struct to hold generic contents
+struct LootBox<T> {
+    contents: T,
+}
+
 fn main() {
     println!("Welcome to the Rusty Arena! ⚔️");
     println!("Its going to be a fierce battle! Its a bumpy night ahead! Fasten your seatbelt 🌑");
@@ -106,5 +111,17 @@ fn main() {
         println!("{} 🥊 {}", player_two.name(), player_one.name());
     }
 
+    let gold_box: LootBox<i32> = LootBox { contents: 1000 };
+    let sword_box: LootBox<String> = LootBox { contents: String::from("Excalibur") };
 
+    println!(
+        "{} found a loot box with {} gold coins! 💰",
+        player_one.name(),
+        gold_box.contents
+    );
+    println!(
+        "{} found a loot box with a mighty sword: {}! 🗡️",
+        player_one.name(),
+        sword_box.contents
+    );
 }
