@@ -56,6 +56,12 @@ struct LootBox<T> {
     contents: T,
 }
 
+// ⚠️ DANGER ZONE
+struct BattleReport<'a> {
+    winner_name: &'a str,
+    prize: String,
+}
+
 fn main() {
     println!("Welcome to the Rusty Arena! ⚔️");
     println!("Its going to be a fierce battle! Its a bumpy night ahead! Fasten your seatbelt 🌑");
@@ -123,5 +129,14 @@ fn main() {
         "{} found a loot box with a mighty sword: {}! 🗡️",
         player_one.name(),
         sword_box.contents
+    );
+
+    let report: BattleReport<'_> = BattleReport {
+        winner_name: player_one.name(),
+        prize: sword_box.contents,
+    };
+    println!(
+        "🏆 The battle is over! The winner is {} who claimed the prize: {}! 🏆",
+        report.winner_name, report.prize
     );
 }
