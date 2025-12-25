@@ -36,18 +36,41 @@ impl Game {
 
         // Part 2: Battle Loop
         loop {
+
             if self.player_one.hp() <= 0 {
                 ui::print_defeat(&self.player_one.name());
                 break;
             }
 
-            self.player_two.receive_damage(self.player_one.attack_power);
-            ui::log_attack(&self.player_one.name(), &self.player_two.name());
+            let choice: i32 = ui::prompt_player_move();
+            
+            if choice == 1 {
+                
+                println!("You chose to Attack! ⚔️");
+                
+                self.player_two.receive_damage(self.player_one.attack_power);
+                
+                ui::log_attack(&self.player_one.name(), &self.player_two.name());
+            
+            } else {
+                
+                println!("You chose to Heal! 🩹");
+                
+                self.player_one.health += 10;
+
+                if self.player_one.health > 100 {
+                    self.player_one.health = 100;
+                }
+                
+                println!("✨ {} healed up to {} HP!", self.player_one.name(), self.player_one.health);
+            
+            }
 
             if self.player_two.hp() <= 0 {
                 ui::print_defeat(&self.player_two.name());
                 break;
             }
+            
             self.player_one.receive_damage(self.player_two.attack_power);
             ui::log_attack(&self.player_two.name(), &self.player_one.name());
         }
