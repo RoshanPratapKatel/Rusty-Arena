@@ -56,11 +56,7 @@ impl Game {
                 
                 println!("You chose to Heal! 🩹");
                 
-                self.player_one.health += 10;
-
-                if self.player_one.health > 100 {
-                    self.player_one.health = 100;
-                }
+                self.player_one.heal(10 as i32);
                 
                 println!("✨ {} healed up to {} HP!", self.player_one.name(), self.player_one.health);
             
