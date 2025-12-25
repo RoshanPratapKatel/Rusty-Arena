@@ -1,3 +1,7 @@
+use rusty_arena::Game;
+
 fn main() {
-    println!("Hello, world!");
+    let mut game: Game = Game::new();
+
+    game.start();
 }
