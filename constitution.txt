@@ -1,0 +1,47 @@
+Rusty Arena Constitution. 📜
+
+1. The World (The Grid)
+
+    Space: A 2D Grid (Terminal window), approx 80 columns wide x 24 rows high.
+
+    Coordinate System: (0,0) is Top-Left. y increases downwards. x increases rightwards.
+
+    Boundaries: Objects cannot leave the box.
+
+2. The Warrior (The Player)
+
+    Location: Locked to the Bottom Row. Can only move Left (x-1) and Right (x+1).
+
+    Health: Starts at 100 HP.
+
+    Action: Can fire Bullets vertically upwards.
+
+    Damage Rule: The Warrior takes 25 Damage if a Goblin successfully hits the ground. (The penalty is for failing to defend).
+
+    Healing Rule: The Warrior regains health by catching (colliding with) falling Healing Packages.
+
+3. The Goblins (The Enemy)
+    
+    The Horde: There is a total "Global Health Pool" of 1000 HP to defeat.
+
+    Spawning: Individual Goblins spawn at the Top Row at random x positions.
+
+    Stats: Each Goblin carries a chunk of the global HP (e.g., one might have 10 HP, another 50 HP).
+
+    Movement: They fall Down (y+1) one step at a time.
+
+    Death: A Goblin dies if its HP reaches 0 (from Bullets).
+
+4. The Projectiles (Bullets)
+
+    Origin: Spawn at Warrior's current x, just above the Warrior.
+
+    Movement: Fly Up (y-1) one step at a time.
+
+    Collision: If a Bullet hits a Goblin, the Goblin loses HP, and the Bullet disappears.
+
+5. Game Loop
+
+    Win Condition: The Global Horde Pool reaches 0 (All goblins spawned and destroyed).
+
+    Lose Condition: Warrior HP reaches 0.
