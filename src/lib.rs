@@ -1,6 +1,4 @@
-pub mod models;
 pub mod game;
+pub mod models;
 
-// Clean re-exports 
 pub use game::Game;
-pub use models::{Fighter, Warrior, Goblin, LootBox};
