@@ -5,7 +5,7 @@ use crossterm::{
     terminal::{self, Clear, ClearType},
     style::{Print, Color, SetForegroundColor, ResetColor},
 };
-use crate::models::Warrior;
+use crate::models::{Goblin, Warrior};
 
 
 pub fn init() {
@@ -19,8 +19,8 @@ pub fn init() {
 }
 
 
-pub fn draw(warrior: &Warrior) {
-    // stdout() constructs a new handle to the standar output each time it's called. 
+pub fn draw(warrior: &Warrior, goblin: &Goblin) {
+    // stdout() constructs a new handle to the standard output each time it's called. 
     let mut stdout = stdout();
 
     // Clear the screen - we want to redraw everything from scratch
@@ -35,6 +35,17 @@ pub fn draw(warrior: &Warrior) {
         stdout,
         SetForegroundColor(Color::Green),
         Print("@"),
+        ResetColor
+    ).unwrap();
+
+    // Move cursor to goblin position 
+    execute!(stdout, cursor::MoveTo(goblin.x, goblin.y)).unwrap();
+
+    // Draw the goblin in Red color
+    execute!(
+        stdout,
+        SetForegroundColor(Color::Red),
+        Print("G"),
         ResetColor
     ).unwrap();
 

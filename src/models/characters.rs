@@ -8,3 +8,14 @@ impl Warrior {
         Self { x, y }
     }
 }
+
+pub struct Goblin {
+    pub x: u16,
+    pub y: u16,
+}
+
+impl Goblin {
+    pub fn new(x: u16, y: u16) -> Self {
+        Self { x, y }
+    }
+}

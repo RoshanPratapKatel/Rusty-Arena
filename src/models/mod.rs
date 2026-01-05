@@ -1,3 +1,3 @@
 pub mod characters;
 
-pub use characters::Warrior;
+pub use characters::{Warrior, Goblin};
